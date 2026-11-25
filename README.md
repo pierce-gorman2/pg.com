@@ -20,7 +20,7 @@ A one-page static site: plain HTML and CSS with no build step, hosted on **Cloud
 - Cloudflare DNS should have no leftover Squarespace records (`198.185.x.x`, `198.49.x.x`, `ext-sq.squarespace.com`).
 
 ## After it's live (for ranking and a knowledge panel)
-1. **Google Search Console**: add `piercegorman.com` as a Domain property (verify with the DNS TXT record it gives you, added in Squarespace DNS), submit `https://piercegorman.com/sitemap.xml`, and use **URL Inspection → Request indexing**.
+1. **Google Search Console**: add `piercegorman.com` as a Domain property (verify with the DNS TXT record it gives you, added in Cloudflare DNS), submit `https://piercegorman.com/sitemap.xml`, and use **URL Inspection → Request indexing**.
 2. Test with the [Rich Results Test](https://search.google.com/test/rich-results) and [Schema validator](https://validator.schema.org/).
 3. **Link back from every profile.** Put `https://piercegorman.com` in the website or bio field on LinkedIn, YouTube, Instagram, the podcast pages, and Traditio.
 4. Use the same name, headshot, and one-line description everywhere.
