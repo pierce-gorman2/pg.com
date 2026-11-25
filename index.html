@@ -15,8 +15,10 @@
   <meta property="og:title" content="Pierce Gorman | Third-Generation Franchisee &amp; Restaurant Operator">
   <meta property="og:description" content="Pierce Gorman is a third-generation franchisee with DHC of Kansas, a family-owned Dave's Hot Chicken group, and host of the Restaurant Excellence podcast.">
   <meta property="og:url" content="https://piercegorman.com/">
-  <meta property="og:image" content="https://piercegorman.com/pierce.jpg">
-  <meta property="og:image:alt" content="Pierce Gorman">
+  <meta property="og:image" content="https://piercegorman.com/og-image.jpg">
+  <meta property="og:image:width" content="768">
+  <meta property="og:image:height" content="402">
+  <meta property="og:image:alt" content="Pierce Gorman with his wife, Hannah, and their son">
   <meta property="profile:first_name" content="Pierce">
   <meta property="profile:last_name" content="Gorman">
 
@@ -24,8 +26,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Pierce Gorman | Third-Generation Franchisee &amp; Restaurant Operator">
   <meta name="twitter:description" content="Pierce Gorman is a third-generation franchisee with DHC of Kansas, a family-owned Dave's Hot Chicken group, and host of the Restaurant Excellence podcast.">
-  <meta name="twitter:image" content="https://piercegorman.com/pierce.jpg">
-  <meta name="twitter:image:alt" content="Pierce Gorman">
+  <meta name="twitter:image" content="https://piercegorman.com/og-image.jpg">
+  <meta name="twitter:image:alt" content="Pierce Gorman with his wife, Hannah, and their son">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon.png" type="image/png" sizes="180x180">
@@ -117,20 +119,18 @@
       padding: clamp(3.5rem, 10vw, 7rem) 1.5rem 4rem;
     }
     .photo {
-      width: 8.5rem; height: 8.5rem;
-      border-radius: 50%;
+      width: min(15rem, 70%);
+      aspect-ratio: 4 / 5;
+      border-radius: 6px;
       overflow: hidden;
-      margin-bottom: 2.25rem;
-      /* Placeholder monogram shows until pierce.jpg is added */
+      margin: 0 0 2.25rem;
       background: #ece7e0;
-      display: grid; place-items: center;
-      font-family: var(--serif); font-size: 2.5rem; color: var(--muted);
-      position: relative;
     }
     .photo img {
-      position: absolute; inset: 0;
+      display: block;
       width: 100%; height: 100%;
       object-fit: cover;
+      object-position: center;
     }
     h1 {
       font-family: var(--serif);
@@ -187,10 +187,9 @@
   <a class="skip" href="#content">Skip to content</a>
   <main id="content">
     <header>
-      <div class="photo">
-        <span aria-hidden="true">PG</span>
-        <img src="pierce.jpg" alt="Pierce Gorman" width="272" height="272" fetchpriority="high" decoding="async" onerror="this.remove()">
-      </div>
+      <figure class="photo">
+        <img src="pierce.jpg" alt="Pierce Gorman with his wife, Hannah, and their son" width="480" height="600" fetchpriority="high" decoding="async">
+      </figure>
       <h1>Pierce Gorman</h1>
       <p class="tagline">Third-generation franchisee<span aria-hidden="true">|</span>DHC of Kansas<span aria-hidden="true">|</span>Host of Restaurant Excellence</p>
     </header>
