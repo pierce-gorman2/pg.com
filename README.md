@@ -1,44 +1,41 @@
 # piercegorman.com
 
-A one-page static site: plain HTML and CSS with no build step, hosted on Cloudflare Pages.
+A one-page static site: plain HTML and CSS with no build step, hosted on **GitHub Pages** from `github.com/pierce-gorman2/pg.com`. Every push to `main` goes live within a minute or two.
 
 ## Files
 | File | Purpose |
 |---|---|
-| `index.html` | The page, including all SEO tags and the JSON-LD (ProfilePage → Person) |
-| `pierce.jpg` | **You add this.** Headshot used on the page and in social previews |
+| `index.html` | The page, including all SEO tags and the JSON-LD (ProfilePage, Person, PodcastSeries) |
+| `pierce.jpg` | Bio photo on the page and the image in Google's structured data |
+| `og-image.jpg` | Wide crop used when the link is shared (texts, LinkedIn, etc.) |
 | `favicon.svg`, `favicon.png`, `apple-touch-icon.png` | "PG" monogram icons |
 | `robots.txt`, `sitemap.xml` | Crawl rules and the sitemap |
-| `_headers` | Cloudflare Pages security and cache headers |
+| `CNAME` | Tells GitHub Pages the site's domain is piercegorman.com |
+| `.nojekyll` | Tells GitHub Pages to serve the files as-is |
+| `_headers` | Only used if the site ever moves to Cloudflare Pages or Netlify; GitHub Pages ignores it |
 
-## Deploy (Cloudflare Pages + GitHub)
+## Turn on GitHub Pages (one time)
+1. Go to github.com/pierce-gorman2/pg.com → **Settings** → **Pages** (left sidebar).
+2. Under **Build and deployment**, set **Source** to **Deploy from a branch**, **Branch** to **main**, and the folder to **/ (root)**. Click **Save**.
+3. **Custom domain** should already show `piercegorman.com`. If it doesn't, type it in and save.
 
-1. **Create the GitHub repo.** On github.com, click New repository, name it `piercegorman.com`, and leave it empty.
-2. **Push this folder** (run these in this folder):
-   ```bash
-   git add -A
-   git commit -m "Initial site"
-   git remote add origin https://github.com/YOUR-USERNAME/piercegorman.com.git
-   git push -u origin main
-   ```
-3. **Create the Pages project.** In the Cloudflare dashboard, go to **Workers & Pages → Create → Pages → Connect to Git**, pick the repo, and use these settings:
-   - Framework preset: **None**
-   - Build command: *(leave blank)*
-   - Build output directory: `/`
-   Click **Save and Deploy**. You'll get a `*.pages.dev` URL. Check the site there first.
+## Point piercegorman.com at it (Squarespace Domains)
+1. Log in to Squarespace → **Domains** → **piercegorman.com** → **DNS** → **DNS Settings**.
+2. Delete the **Squarespace Defaults** record group, since it points the domain at the "Coming Soon" page.
+3. Add these records under **Custom records**:
 
-## Point piercegorman.com at it
+| Host | Type | Data |
+|---|---|---|
+| @ | A | 185.199.108.153 |
+| @ | A | 185.199.109.153 |
+| @ | A | 185.199.110.153 |
+| @ | A | 185.199.111.153 |
+| www | CNAME | pierce-gorman2.github.io |
 
-**Easiest: move the domain's DNS to Cloudflare** (this is free, and the domain can stay with your current registrar):
-1. Cloudflare dashboard → **Add a domain** → enter `piercegorman.com` → Free plan.
-2. Cloudflare shows two nameservers. At your registrar (GoDaddy, Namecheap, Squarespace, etc.), replace the domain's nameservers with those two. Changes usually take minutes, but can take up to 24h.
-3. Back in **Workers & Pages → your project → Custom domains → Set up a custom domain**, add `piercegorman.com`. Cloudflare creates the DNS record for you.
-4. Add `www.piercegorman.com` the same way. Then add a redirect so `www` points to the bare domain: **Rules → Redirect Rules → Create rule → template "Redirect from WWW to root"**. This prevents duplicate-URL SEO issues.
-
-**If you'd rather keep DNS at your registrar:** add a `CNAME` record with name `www` pointing to `your-project.pages.dev`. Note that the bare `piercegorman.com` only works if your registrar supports CNAME flattening or ALIAS records. If it doesn't, use the nameserver method above.
+4. Wait 15–60 minutes. Then, back in GitHub → Settings → Pages, tick **Enforce HTTPS** once it lets you (it can take up to a day for the certificate).
 
 ## After it's live (for ranking and a knowledge panel)
-1. **Google Search Console**: add `piercegorman.com` as a Domain property (verify with a DNS TXT record in Cloudflare), submit `https://piercegorman.com/sitemap.xml`, and use **URL Inspection → Request indexing**.
+1. **Google Search Console**: add `piercegorman.com` as a Domain property (verify with the DNS TXT record it gives you, added in Squarespace DNS), submit `https://piercegorman.com/sitemap.xml`, and use **URL Inspection → Request indexing**.
 2. Test with the [Rich Results Test](https://search.google.com/test/rich-results) and [Schema validator](https://validator.schema.org/).
-3. **Link back from every profile.** Put `https://piercegorman.com` in the website or bio field on LinkedIn, YouTube, Instagram, X, the podcast page, and Traditio. Two-way links between this page and those profiles are the strongest signal that they all describe the same Pierce Gorman.
+3. **Link back from every profile.** Put `https://piercegorman.com` in the website or bio field on LinkedIn, YouTube, Instagram, the podcast pages, and Traditio.
 4. Use the same name, headshot, and one-line description everywhere.
